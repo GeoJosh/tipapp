@@ -4,5 +4,13 @@ export interface CreateApplicationRequest {
   venmo_username: string;
   email: string;
   employer: string;
-  verification_information: string;
+  employment_information: string;
+}
+
+export interface GetApplicationResponse {
+  first_name: string;
+  venmo_username: string;
+  email: string;
+  employer: string;
+  employment_information: string;
 }

@@ -1,5 +1,29 @@
 .container {
   padding-top: 1.0rem;
   padding-bottom: 1.0rem;
+  background-color: rgb(255, 255, 255, 0.50);
 }
 
+.action {
+  margin-bottom: 1.5rem;
+}
+
+.action > .card {
+  height: 100%;
+}
+
+.action > .card > .card-body,
+.tip {
+  padding: 1.5rem;
+}
+
+.btn-venmo {
+  background-color: #3d95ce;
+  border-color: #3d95ce;
+  margin: 1.0rem 0;
+  width: 250px;
+}
+
+.btn-venmo > .logo {
+  height: 15px;
+}

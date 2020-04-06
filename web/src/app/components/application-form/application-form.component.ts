@@ -27,7 +27,7 @@ interface IUserForm {
   venmoUsername: string;
   email: string;
   employer: string;
-  verificationInformation: string;
+  employmentInformation: string;
 }
 
 enum FormStatus {
@@ -60,7 +60,7 @@ export class ApplicationFormComponent implements OnInit {
       venmoUsername: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       employer: new FormControl('', [Validators.required]),
-      verificationInformation: new FormControl('', [Validators.required]),
+      employmentInformation: new FormControl('', [Validators.required]),
     });
   }
 
@@ -75,7 +75,7 @@ export class ApplicationFormComponent implements OnInit {
       venmo_username: data.venmoUsername,
       email: data.email,
       employer: data.employer,
-      verification_information: data.verificationInformation,
+      employment_information: data.employmentInformation,
     }).subscribe(
     (response: HttpResponseBase) => {
       this.formStatus = FormStatus.COMPLETE;

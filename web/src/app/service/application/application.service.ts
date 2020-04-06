@@ -12,6 +12,7 @@ import {
 
 import {
   CreateApplicationRequest,
+  GetApplicationResponse,
 } from './application.model';
 
 import {
@@ -30,6 +31,7 @@ export const ApplicationService = new InjectionToken('ApplicationService');
 
 export interface IApplicationService {
   createApplication(request: CreateApplicationRequest): Observable<HttpResponseBase>;
+  getApplication(): Observable<GetApplicationResponse>;
 }
 
 class ApplicationServiceFactory {
