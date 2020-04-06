@@ -35,11 +35,14 @@ def createApplication() -> Response:
     try:
         creation_data: ApplicationCreationRequest = schema.load(request.get_json())
 
+        email_salt: bytes = bcrypt.gensalt()
+
         application: Application = Application.create(
             first_name = creation_data.first_name,
             last_name = creation_data.last_name,
             venmo_username = creation_data.venmo_username,
-            email = creation_data.email,
+            email = bcrypt.hashpw(creation_data.email.encode('utf8'), bcrypt.gensalt()),
+            email_salt = bcrypt.hashpw(creation_data.email.encode('utf8'), email_salt),
             employer = creation_data.employer,
             verification_information = creation_data.verification_information,
             update_nonce = bcrypt.gensalt(),

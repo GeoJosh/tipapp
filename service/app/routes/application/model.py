@@ -28,6 +28,7 @@ class Application(BaseModel):
     last_name = CharField(null=False)
     venmo_username = CharField(null=False, unique=True)
     email = CharField(null=False, unique=True)
+    email_salt = BlobField(null=False)
     employer = CharField(null=False)
     verification_information = CharField(null=False)
     update_nonce = BlobField(null=False)
