@@ -6,3 +6,8 @@
   width: 200px;
   height: 200px;
 }
+
+.form-group.required label:after {
+  content:"*";
+  color:red;
+}

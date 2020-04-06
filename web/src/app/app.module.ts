@@ -25,6 +25,10 @@ import {
 } from 'ngx-bootstrap/modal';
 
 import {
+  TooltipModule
+} from 'ngx-bootstrap/tooltip';
+
+import {
   AppComponent,
 } from './app.component';
 
@@ -61,6 +65,7 @@ import {
     AppRoutingModule,
 
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
   providers: [
     {
