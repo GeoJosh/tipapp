@@ -1,0 +1,22 @@
+# Virtual Environment
+venv/
+
+# Database Objects
+*.sqlite
+
+# Cache Files
+*.pyc
+__pycache__/
+
+instance/
+
+# Testing Artifacts
+.pytest_cache/
+.coverage*
+htmlcov/
+
+# Build Artifacts
+dist/
+build/
+*.egg-info/
+

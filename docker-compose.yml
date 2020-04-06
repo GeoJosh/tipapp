@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+
+  tipapp-web:
+    image: "tipapp/web"
+    build:
+      context: ./web
+    ports:
+      - "8000:80"
+    depends_on:
+      - tipapp-service
+
+  tipapp-service:
+    image: "tipapp/service"
+    build:
+      context: ./service
+    depends_on:
+      - tipapp-database
+    environment:
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+  
+  tipapp-database:
+    image: "tipapp/database"
+    build:
+      context: ./database
+    environment:
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}

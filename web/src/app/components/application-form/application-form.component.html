@@ -1,0 +1,50 @@
+<div class="form-container">
+  <div *ngIf="formStatus === FormStatus.COMPLETE;then complete else incomplete"></div>
+</div>
+
+<ng-template #incomplete>
+  <h5 class="card-title">Submit Application</h5>
+  <form [formGroup]="applicationFormGroup">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <input class="form-control" type="text" formControlName="firstName" required/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <input class="form-control" type="text" formControlName="lastName" required/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="venmoUsername">Venmo Username</label>
+        <input class="form-control" type="text" formControlName="venmoUsername" required/>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="email">Email Address</label>
+        <input class="form-control" type="email" formControlName="email" required/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="employer">Employer</label>
+        <input class="form-control" type="text" formControlName="employer" required/>
+      </div>
+    </div>    
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="verificationInformation">Employer Verification Information</label>
+        <textarea class="form-control" formControlName="verificationInformation" required></textarea>
+      </div>
+    </div>
+    
+    <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="applicationFormGroup.invalid" (click)="submitApplication()">Sign Up</button>
+  </form>
+</ng-template>
+
+<ng-template #complete>
+  <div class="text-center">
+    <h5 class="card-title">Application Complete</h5>
+    <img class="complete-check" src="assets/check.svg" />  
+  </div>
+</ng-template>
