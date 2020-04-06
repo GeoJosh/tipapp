@@ -1,1 +1,7 @@
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body {
+  margin: 0;
+  /* Background pattern from Toptal Subtle Patterns */
+  background-image:url('/assets/handmadepaper.png');
+}

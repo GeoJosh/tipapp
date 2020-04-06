@@ -13,6 +13,7 @@ import {
 
 import {
   CreateApplicationRequest,
+  GetApplicationResponse,
 } from './application.model';
 
 import {
@@ -31,5 +32,9 @@ export class ApplicationServiceRest implements IApplicationService {
 
   public createApplication(request: CreateApplicationRequest): Observable<HttpResponseBase> {
     return this.http.post<HttpResponseBase>(`${environment.endpoints.application}`, request);
+  }
+
+  public getApplication(): Observable<GetApplicationResponse> {
+    return this.http.get<GetApplicationResponse>(`${environment.endpoints.application}`);
   }
 }

@@ -24,7 +24,7 @@ def projection(application: Dict, keys: Tuple[str] ) -> Dict:
 
 @bp.route('', methods=['GET'])
 def getApplication() -> Response:
-    application_data = ('first_name', 'last_name', 'venmo_username', 'employer', 'verification_information')
+    application_data = ('first_name', 'venmo_username', 'employer', 'employment_information')
     application: Application = Application.select().order_by(fn.Random()).limit(1).get()
     return jsonify(projection(model_to_dict(application), application_data))
 
@@ -44,8 +44,9 @@ def createApplication() -> Response:
             email = bcrypt.hashpw(creation_data.email.encode('utf8'), bcrypt.gensalt()),
             email_salt = bcrypt.hashpw(creation_data.email.encode('utf8'), email_salt),
             employer = creation_data.employer,
-            verification_information = creation_data.verification_information,
+            employment_information = creation_data.employment_information,
             update_nonce = bcrypt.gensalt(),
+            enabled = True,
         )
 
         return Response(status=201)

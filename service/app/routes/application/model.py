@@ -4,6 +4,7 @@ import sys
 
 from peewee import (
     BlobField,
+    BooleanField,
     CharField,
     DateTimeField,
     Model,
@@ -30,8 +31,9 @@ class Application(BaseModel):
     email = CharField(null=False, unique=True)
     email_salt = BlobField(null=False)
     employer = CharField(null=False)
-    verification_information = CharField(null=False)
+    employment_information = CharField(null=False)
     update_nonce = BlobField(null=False)
+    enabled = BooleanField(null=False)
 
 def get_models() -> List[BaseModel]:
     return [Application]
