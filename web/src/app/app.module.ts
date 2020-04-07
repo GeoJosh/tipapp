@@ -21,8 +21,16 @@ import {
 } from '@angular/platform-browser/animations';
 
 import {
-  ModalModule
+  AlertModule,
+} from 'ngx-bootstrap/alert';
+
+import {
+  ModalModule,
 } from 'ngx-bootstrap/modal';
+
+import {
+  TooltipModule,
+} from 'ngx-bootstrap/tooltip';
 
 import {
   AppComponent,
@@ -60,7 +68,9 @@ import {
 
     AppRoutingModule,
 
+    AlertModule.forRoot(),
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
   ],
   providers: [
     {

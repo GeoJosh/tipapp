@@ -11,7 +11,15 @@ sys.path.append('.')
 def create_app(test_config: Dict = None) -> Flask:
 
     app = Flask(__name__, instance_relative_config=True)
-    CORS(app)
+
+    allowed_origins = os.environ.get('CORS_ALLOWED_ORIGINS')
+    if allowed_origins is not None:    
+        CORS(app, resources={
+            r"/application": dict(
+                origins=allowed_origins.split(','),
+                methods=(os.environ.get('CORS_ALLOWED_METHODS') or 'GET').split(','),
+            )
+        })
 
     app.config.from_mapping(
         DATABASE_NAME = os.environ.get('DATABASE_NAME') or 'app',
