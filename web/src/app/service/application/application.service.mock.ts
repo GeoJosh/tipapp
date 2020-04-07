@@ -11,8 +11,7 @@ import {
 } from 'rxjs';
 
 import {
-  CreateApplicationRequest,
-  GetApplicationResponse,
+  Application,
 } from './application.model';
 
 import {
@@ -21,10 +20,10 @@ import {
 
 @Injectable()
 export class ApplicationServiceMock implements IApplicationService {
-  public createApplication(request: CreateApplicationRequest): Observable<HttpResponseBase> {
+  public createApplication(request: Application): Observable<HttpResponseBase> {
     throw new Error('Method not implemented.');
   }
-  public getApplication(): Observable<GetApplicationResponse> {
+  public getApplication(): Observable<Application> {
     throw new Error('Method not implemented.');
   }
 }

@@ -1,5 +1,7 @@
 import bcrypt
+import hashlib
 import logging
+import os
 import sys
 import time
 
@@ -25,8 +27,12 @@ def projection(application: Dict, keys: Tuple[str] ) -> Dict:
 @bp.route('', methods=['GET'])
 def getApplication() -> Response:
     application_data = ('first_name', 'venmo_username', 'employer', 'employment_information')
-    application: Application = Application.select().order_by(fn.Random()).limit(1).get()
-    return jsonify(projection(model_to_dict(application), application_data))
+    try:
+        application: Application = Application.select().order_by(fn.Random()).limit(1).get()
+        return jsonify(projection(model_to_dict(application), application_data))
+    except (DoesNotExist) as ex:
+        logger.warning('getApplication error', exc_info=True)
+        return 'Application does not exist.', 404
 
 @bp.route('', methods=['POST'])
 def createApplication() -> Response:
@@ -35,14 +41,10 @@ def createApplication() -> Response:
     try:
         creation_data: ApplicationCreationRequest = schema.load(request.get_json())
 
-        email_salt: bytes = bcrypt.gensalt()
-
         application: Application = Application.create(
             first_name = creation_data.first_name,
-            last_name = creation_data.last_name,
             venmo_username = creation_data.venmo_username,
-            email = bcrypt.hashpw(creation_data.email.encode('utf8'), bcrypt.gensalt()),
-            email_salt = bcrypt.hashpw(creation_data.email.encode('utf8'), email_salt),
+            email = hashlib.sha512(creation_data.email.encode('utf8')).hexdigest(),
             employer = creation_data.employer,
             employment_information = creation_data.employment_information,
             update_nonce = bcrypt.gensalt(),
@@ -55,4 +57,4 @@ def createApplication() -> Response:
         return 'Application information already exists.', 400
     except (ValidationError) as ex:
         logger.warning('createApplication error', exc_info=True)
-        return 'Invalid applicatino information.', 400
+        return 'Invalid application information.', 400

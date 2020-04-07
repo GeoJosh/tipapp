@@ -26,10 +26,8 @@ class Application(BaseModel):
     creation_date = DateTimeField(default=datetime.datetime.now)
 
     first_name = CharField(null=False)
-    last_name = CharField(null=False)
     venmo_username = CharField(null=False, unique=True)
     email = CharField(null=False, unique=True)
-    email_salt = BlobField(null=False)
     employer = CharField(null=False)
     employment_information = CharField(null=False)
     update_nonce = BlobField(null=False)

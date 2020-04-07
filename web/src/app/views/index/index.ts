@@ -12,7 +12,7 @@ import {
 } from '../../components/application-form/application-form.component';
 
 import {
-  GetApplicationResponse,
+  Application,
 } from '../../service/application/application.model';
 
 import {
@@ -28,7 +28,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class IndexViewComponent {
 
-  public currentApplication: GetApplicationResponse;
+  public currentApplication: Application;
 
   constructor(
     private modalService: BsModalService,
@@ -37,7 +37,7 @@ export class IndexViewComponent {
 
   public startTip() {
     this.applicationService.getApplication().subscribe(
-      (response: GetApplicationResponse) => {
+      (response: Application) => {
         this.currentApplication = response;
       },
       (error: HttpErrorResponse) => {

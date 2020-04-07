@@ -11,3 +11,7 @@
   content:"*";
   color:red;
 }
+
+.error-alert {
+  margin-top: 1.0rem;
+}
