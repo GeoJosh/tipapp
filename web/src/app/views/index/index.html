@@ -4,16 +4,6 @@
     <p class="lead">Helping our community one service professional at a time.</p>
   </div>
 
-  <div class="col-md-12">
-    <p>
-      The emergence of the COVID-19 pandemic has impacted communities across the globe. In the United States alone millions have been furloughed or lost their jobs due to the necessary closure of businesses. Our community is no exception to this outcome. Numerous community members are no longer able to recieve their income due to the closure of their employee's business with no end in sight.
-    </p>
-
-    <p>
-      Tip Northshore is a way to provide some direct relief to those impacted professionals right here in our own community. Tip Northshore is provided as a free service to the community and <em>collects no fees nor personal data</em>. This allows you provide maximum benefit to your fellow community members.
-    </p>
-  </div>
-
   <div class="row">
     <div *ngIf="currentApplication;then tipping else initial"></div>
 
@@ -47,19 +37,29 @@
     </ng-template>
 
     <ng-template #tipping>
-      <div class="col-md-8 offset-md-2">
-        <div class="card text-center tip">
-          <div>Send a tip to:</div>
-
-          <h3>{{ currentApplication?.first_name }}</h3>
-          <h6>Employee of {{ currentApplication?.employer }}</h6>
-          
-          <div>{{ currentApplication?.employment_information }}</div>
-          <div>
-            <a class="btn btn-venmo btn-lg" href="https://venmo.com/{{ currentApplication?.venmo_username }}" role="button"><img src="/assets/venmo_logo_white.png" class="logo"/></a>
-          </div>
+      <div class="col-md-8 offset-md-2 tip">
+        <div class="card text-center">
+          <div class="card-body">
+            <app-tip-content [application]="currentApplication"></app-tip-content>
+            </div>
         </div> 
       </div>
     </ng-template>
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <p>
+            The emergence of the COVID-19 pandemic has impacted communities across the globe. In the United States alone millions have been furloughed or lost their jobs due to the necessary closure of businesses. Our community is no exception to this outcome. Numerous community members are no longer able to recieve their income due to the closure of their employee's business with no end in sight.
+          </p>
+
+          <p>
+            Tip Northshore is a way to provide some direct relief to those impacted professionals right here in our own community. Tip Northshore in conjunction with <a href="http://northshoreparent.com">Northshore Parent</a> is provided as a free service to the community and <em>collects no fees nor personal data</em>. This allows you provide maximum benefit to your fellow community members.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>  
 </div>
