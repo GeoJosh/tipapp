@@ -1,0 +1,13 @@
+<div>Send a tip to:</div>
+
+<h3>{{ application?.first_name }}</h3>
+<h6>Employee of {{ application?.employer }}</h6>
+
+<div>{{ application?.employment_information }}</div>
+<div>
+  <a class="btn btn-venmo btn-lg" href="https://venmo.com/{{ application?.venmo_username }}" role="button"><img src="/assets/venmo_logo_white.png" class="logo"/></a>
+</div>
+
+<div class="text-center disclaimer">
+    <small class="text-muted">Disclaimer: Tip Northshore and Northshore Parent assumes zero liability. This is on the honor system here, and we will not be vetting each person in the database.</small>
+</div>
