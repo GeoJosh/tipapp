@@ -6,6 +6,8 @@ TipApp is an application developed in conjunction with [Northshore Parent](http:
 
 TipApp allows individuals to participate by quickly signing up themselves via the provided interface. Community members are then presented with a random individual from the particpant pool and given a link to provide support directly through the Venmo platform.
 
+To see a live example of TipApp see [Tip Northshore](https://tipnorthshore.net/).
+
 Feel free to use TipApp for your own community's needs. If you would like to help with TipApp's development participation is always welcome.
 
 ## Quickstart
