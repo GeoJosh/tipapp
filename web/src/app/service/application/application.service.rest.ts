@@ -12,7 +12,7 @@ import {
 } from 'rxjs';
 
 import {
-  CreateApplicationRequest,
+  Application,
 } from './application.model';
 
 import {
@@ -29,7 +29,11 @@ export class ApplicationServiceRest implements IApplicationService {
     private http: HttpClient,
   ) { }
 
-  public createApplication(request: CreateApplicationRequest): Observable<HttpResponseBase> {
+  public createApplication(request: Application): Observable<HttpResponseBase> {
     return this.http.post<HttpResponseBase>(`${environment.endpoints.application}`, request);
+  }
+
+  public getApplication(): Observable<Application> {
+    return this.http.get<Application>(`${environment.endpoints.application}`);
   }
 }

@@ -11,7 +11,7 @@ import {
 } from 'rxjs';
 
 import {
-  CreateApplicationRequest,
+  Application,
 } from './application.model';
 
 import {
@@ -29,7 +29,8 @@ import {
 export const ApplicationService = new InjectionToken('ApplicationService');
 
 export interface IApplicationService {
-  createApplication(request: CreateApplicationRequest): Observable<HttpResponseBase>;
+  createApplication(request: Application): Observable<HttpResponseBase>;
+  getApplication(): Observable<Application>;
 }
 
 class ApplicationServiceFactory {
@@ -40,7 +41,7 @@ class ApplicationServiceFactory {
   ): IApplicationService {
     if (!ApplicationServiceFactory.instance) {
       // tslint:disable-next-line:no-console
-      console.info(`Current Payment endpoint URL: ${environment.endpoints.application}`);
+      console.info(`Current Application endpoint URL: ${environment.endpoints.application}`);
       ApplicationServiceFactory.instance = environment.endpoints.application ?
       new ApplicationServiceRest(http) :
       new ApplicationServiceMock();

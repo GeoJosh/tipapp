@@ -1,8 +1,65 @@
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-4">Tip Northshore</h1>
-    <p class="lead">Supporting Northshore residents who support us.</p>
+    <p class="lead">Helping our community one service professional at a time.</p>
   </div>
 
-  <button type="button" class="btn btn-primary btn-lg" (click)="openApplication()">Submit Application</button>
+  <div class="col-md-12">
+    <p>
+      The emergence of the COVID-19 pandemic has impacted communities across the globe. In the United States alone millions have been furloughed or lost their jobs due to the necessary closure of businesses. Our community is no exception to this outcome. Numerous community members are no longer able to recieve their income due to the closure of their employee's business with no end in sight.
+    </p>
+
+    <p>
+      Tip Northshore is a way to provide some direct relief to those impacted professionals right here in our own community. Tip Northshore is provided as a free service to the community and <em>collects no fees nor personal data</em>. This allows you provide maximum benefit to your fellow community members.
+    </p>
+  </div>
+
+  <div class="row">
+    <div *ngIf="currentApplication;then tipping else initial"></div>
+
+    <ng-template #initial>
+      <div class="col-md-6 action">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">Want to help?</h3>
+            <p>
+              Helping out is easy. Click the Tip Northshore button and you will be given the information about a random impacted community member with a link to tip them directly.
+            </p>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-primary btn-lg btn-block" (click)="startTip()">Tip Northshore</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 action">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">Are you impacted?</h3>
+            <p>
+              If your job was impacted by business closures due to COVID-19 fill out an application to be added to the tipping pool. All you need is a <a href="https://venmo.com/signup">Venmo</a> account.
+            </p>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-primary btn-lg btn-block" (click)="openApplication()">Submit an Application</button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #tipping>
+      <div class="col-md-8 offset-md-2">
+        <div class="card text-center tip">
+          <div>Send a tip to:</div>
+
+          <h3>{{ currentApplication?.first_name }}</h3>
+          <h6>Employee of {{ currentApplication?.employer }}</h6>
+          
+          <div>{{ currentApplication?.employment_information }}</div>
+          <div>
+            <a class="btn btn-venmo btn-lg" href="https://venmo.com/{{ currentApplication?.venmo_username }}" role="button"><img src="/assets/venmo_logo_white.png" class="logo"/></a>
+          </div>
+        </div> 
+      </div>
+    </ng-template>
+  </div>
 </div>
