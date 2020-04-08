@@ -4,6 +4,14 @@
   background-color: rgb(255, 255, 255, 0.50);
 }
 
+.page-header {
+  border-radius: 5px;
+  background-image: url('/assets/banner.png');
+  height: 275px;
+  padding-top: 20px;
+  margin-bottom: 1.0rem;
+}
+
 .action {
   margin-bottom: 1.5rem;
 }
@@ -27,3 +35,4 @@
 .btn-venmo > .logo {
   height: 15px;
 }
+
