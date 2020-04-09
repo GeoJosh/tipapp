@@ -35,4 +35,5 @@ jobs:
             key: ${{ secrets. DIGITALOCEAN_KEY }}                        
             source: "web/dist/tipapp"
             target: "/var/www/html/tipnorthshore.net/tipapp"
+            strip_components: 3
             rm: true
