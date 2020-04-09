@@ -50,7 +50,7 @@ Application service to communicate with the TipAll Service API to enable applica
 
 ### Service API
 
-![Run Service API Python Unit Tests](https://github.com/GeoJosh/tipapp/workflows/Run%20Service%20API%20Python%20Unit%20Tests/badge.svg)
+![Service API](https://github.com/GeoJosh/tipapp/workflows/Service%20API/badge.svg?branch=master)
 
 The TipApp Service API is developed as a [Flask](https://palletsprojects.com/p/flask/) application providing REST endpoints to enable creation and retrieval of application data.
 
