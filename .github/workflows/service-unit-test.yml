@@ -6,7 +6,8 @@ jobs:
     name: Service API Unit Test
     runs-on: ubuntu-latest
     steps:
+        - uses: actions/checkout@v2
         - name: Python Pytest Github Action
           uses: fylein/python-pytest-github-action@v2
           with:
-            args: pip3 install -r ${{ github.workspace }}/service/requirements.txt -r ${{ github.workspace }}/service/tests/requirements.txt && pytest --cov=app ${{ github.workspace }}/service/tests
+            args: pip3 install -r service/requirements.txt -r service/tests/requirements.txt && pytest --cov=app service/tests
