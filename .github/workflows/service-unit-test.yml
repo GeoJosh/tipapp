@@ -9,4 +9,4 @@ jobs:
         - name: Python Pytest Github Action
           uses: fylein/python-pytest-github-action@v2
           with:
-            args: pip3 install -r ${{ github.workspace }}service/requirements.txt -r ${{ github.workspace }}service/tests/requirements.txt && pytest --cov=app ${{ github.workspace }}service/tests
+            args: pip3 install -r ${{ github.workspace }}/service/requirements.txt -r ${{ github.workspace }}/service/tests/requirements.txt && pytest --cov=app ${{ github.workspace }}/service/tests
