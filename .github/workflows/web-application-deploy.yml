@@ -33,6 +33,6 @@ jobs:
             host: ${{ secrets. DIGITALOCEAN_HOST_WEB }}
             username: ${{ secrets. DIGITALOCEAN_USERNAME }}
             key: ${{ secrets. DIGITALOCEAN_KEY }}                        
-            source: "dist/tipapp"
+            source: "web/dist/tipapp"
             target: "/var/www/html/tipnorthshore.net/tipapp"
             rm: true
