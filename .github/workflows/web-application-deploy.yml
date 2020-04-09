@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+    name: Build and Deploy to Production
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,8 +21,17 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: npm install and npm run build
+      - name: Run Production Configuration Build
         run: |
           cd web
           npm ci
           npm run build:production
+
+      - name: Copy Files to Droplet
+        uses: appleboy/scp-action@master
+        with:
+            host: ${{ secrets. DIGITALOCEAN_HOST_WEB }}
+            username: ${{ secrets. DIGITALOCEAN_USERNAME }}
+            key: ${{ secrets. DIGITALOCEAN_KEY }}            
+            source: "dist/tippapp"
+            target: "/var/www/html/tipnorthshore.net/tipapp"
