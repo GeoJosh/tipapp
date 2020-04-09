@@ -8,6 +8,5 @@ jobs:
     steps:
         - name: Python Pytest Github Action
           uses: fylein/python-pytest-github-action@v2
-          working-directory: ./service
           with:
-            args: pip3 install -r requirements.txt -r tests/requirements && pytest --cov=app
+            args: pip3 install -r service/requirements.txt -r service/tests/requirements && pytest --cov=app service/tests
