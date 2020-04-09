@@ -1,0 +1,12 @@
+name: Run Service API Python Unit Tests
+on: [push]
+
+jobs:
+  build:
+  name: Service API Unit Test
+  runs-on: ubuntu-latest
+  steps:
+    - name: Python Pytest Github Action
+      uses: fylein/python-pytest-github-action@v2
+      with:
+        args: cd service && pip3 install -r requirements.txt -r tests/requirements && pytest --cov=app
