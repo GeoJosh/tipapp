@@ -1,0 +1,16 @@
+.btn-venmo {
+  background-color: #3d95ce;
+  border-color: #3d95ce;
+  margin: 1.0rem 0;
+  width: 250px;
+}
+
+.btn-venmo > .logo {
+  height: 15px;
+}
+
+.disclaimer {
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 16px;
+}

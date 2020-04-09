@@ -45,6 +45,10 @@ import {
 } from './components/application-form/application-form.component';
 
 import {
+  TipContentComponent
+} from './components/tip-content/tip-content.component';
+
+import {
   ApplicationService,
   applicationServiceFactory,
 } from './service/application/application.service';
@@ -58,6 +62,7 @@ import {
     AppComponent,
     ApplicationFormComponent,
     IndexViewComponent,
+    TipContentComponent,
   ],
   imports: [
     BrowserModule,
