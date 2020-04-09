@@ -37,7 +37,10 @@ def init_db(retries: int = 3, delay: int = 5) -> bool:
 
 def connect_database(app: Flask) -> Database:
     if app.config['DATABASE_HOST'] is None:
-        return SqliteDatabase("{}.sqlite".format(app.config['DATABASE_NAME']))
+        if app.config['DATABASE_NAME'] == ':memory:':
+            return SqliteDatabase(':memory:')
+        else:
+            return SqliteDatabase("{}.sqlite".format(app.config['DATABASE_NAME']))
     else:
         return PostgresqlDatabase(
             app.config['DATABASE_NAME'],

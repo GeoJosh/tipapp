@@ -50,6 +50,8 @@ Application service to communicate with the TipAll Service API to enable applica
 
 ### Service API
 
+![Run Service API Python Unit Tests](https://github.com/GeoJosh/tipapp/workflows/Run%20Service%20API%20Python%20Unit%20Tests/badge.svg)
+
 The TipApp Service API is developed as a [Flask](https://palletsprojects.com/p/flask/) application providing REST endpoints to enable creation and retrieval of application data.
 
 The Service API can be configured to store its information in a [PostgreSQL](https://www.postgresql.org/) database. However, if this configuration information is not provided a [SQLite](https://sqlite.org/index.html) database will be generated.
