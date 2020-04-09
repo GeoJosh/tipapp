@@ -1,9 +1,9 @@
-name: Run Service API Python Unit Tests
+name: Service API
 on: [push]
 
 jobs:
   build:
-    name: Service API Unit Test
+    name: Service API Unit Tests
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
