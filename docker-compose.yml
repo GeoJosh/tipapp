@@ -34,3 +34,26 @@ services:
       DATABASE_NAME: ${DATABASE_NAME}
       DATABASE_USER: ${DATABASE_USER}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+
+  tipapp-wordpress:
+    image: "tipapp/wordpress"
+    build:
+      context: ./wordpress
+    restart: always
+    ports:
+      - 8100:80
+    environment:
+      WORDPRESS_DB_HOST: tipapp-mysql
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress_user
+      WORDPRESS_DB_PASSWORD: wordpress_password
+
+  tipapp-mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpress_password
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+

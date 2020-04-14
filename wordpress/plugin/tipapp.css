@@ -1,0 +1,24 @@
+.tipapp-action-button > img {
+    height: 15px;
+}
+
+.tipapp-display-container {
+    text-align: center;
+    font-size: 12pt;
+}
+
+.tipapp-display-first_name {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.tipapp-display-first_name,
+.tipapp-display-employer,
+.tipapp-display-employment_information,
+.tipapp-display-venmo_username {
+    margin: 10px 0;
+}
+
+.tipapp-disclaimer {
+    font-size: 10pt;
+}
