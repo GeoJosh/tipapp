@@ -2,12 +2,17 @@ name: Service API
 on: [push]
 
 jobs:
-  build:
+  unittest:
     name: Service API Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Service Application Repository
         uses: actions/checkout@v2
+
+      - name: Python Pytest Github Action
+        uses: fylein/python-pytest-github-action@v2
+        with:
+          args: cd service && pip3 install -r requirements.txt -r tests/requirements.txt
 
       - name: Cache Python Libraries
         uses: actions/cache@v1
@@ -24,4 +29,6 @@ jobs:
       - name: Python Pytest Github Action
         uses: fylein/python-pytest-github-action@v2
         with:
-          args: cd service && pip3 install -r requirements.txt -r tests/requirements.txt && PYTHONPATH=. pytest --cov=app
+          args: PYTHONPATH=. pytest --cov=app
+      
+
