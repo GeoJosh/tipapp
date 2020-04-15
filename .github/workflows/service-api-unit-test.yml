@@ -6,7 +6,21 @@ jobs:
     name: Service API Unit Tests
     runs-on: ubuntu-latest
     steps:
+        - name:
         - uses: actions/checkout@v2
+
+        - name: Cache Python Libraries
+          uses: actions/cache@v1
+          env:
+            cache-name: service-python-libraries
+          with:
+            path: /usr/local/lib/python3.7/site-packages
+            key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/requirements.txt') }}
+            restore-keys: |
+              ${{ runner.os }}-build-${{ env.cache-name }}-
+              ${{ runner.os }}-build-
+              ${{ runner.os }}-
+
         - name: Python Pytest Github Action
           uses: fylein/python-pytest-github-action@v2
           with:
