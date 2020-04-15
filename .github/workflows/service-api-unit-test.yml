@@ -29,6 +29,6 @@ jobs:
       - name: Python Pytest Github Action
         uses: fylein/python-pytest-github-action@v2
         with:
-          args: PYTHONPATH=. pytest --cov=app
+          args: cd service && PYTHONPATH=. pytest --cov=app
       
 

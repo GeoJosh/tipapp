@@ -46,6 +46,7 @@ jobs:
           path: web/dist/tipapp
   deploy:
     name: Deploy to Production
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
