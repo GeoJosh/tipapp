@@ -54,7 +54,6 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: tipapp-web
-      - run: ls -R .
       - name: Copy Files to Droplet
         uses: appleboy/scp-action@master
         with:
