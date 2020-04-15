@@ -60,7 +60,7 @@ jobs:
           host: ${{ secrets. DIGITALOCEAN_HOST_WEB }}
           username: ${{ secrets. DIGITALOCEAN_USERNAME }}
           key: ${{ secrets. DIGITALOCEAN_KEY }}                        
-          source: "tipapp/tipapp-web/web/dist/tipapp"
+          source: "tipapp-web/web/dist/tipapp"
           target: ${{ secrets. DEPLOY_PATH }}
           strip_components: 3
           rm: true
