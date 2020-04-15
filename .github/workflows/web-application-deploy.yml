@@ -2,11 +2,11 @@ name: Web Application Deployment
 on:
   push:
     branches:
-      - master
+      - chore/automated-service-deployment
 
 jobs:
   build:
-    name: Build and Deploy to Production
+    name: Build and Production Distributables
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -44,7 +44,15 @@ jobs:
         with:
           name: tipapp-web
           path: web/dist/tipapp
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Download production artifacts
+        uses: actions/download-artifact@v1
+        with:
+          name: tipapp-web
       - name: Copy Files to Droplet
         uses: appleboy/scp-action@master
         with:
@@ -52,6 +60,6 @@ jobs:
           username: ${{ secrets. DIGITALOCEAN_USERNAME }}
           key: ${{ secrets. DIGITALOCEAN_KEY }}                        
           source: "web/dist/tipapp"
-          target: "/var/www/html/tipnorthshore.net/tipapp"
+          target: ${{ secrets. DEPLOY_PATH }}
           strip_components: 3
           rm: true
