@@ -2,7 +2,7 @@ name: Web Application Deployment
 on:
   push:
     branches:
-      - master
+      - chore/automated-service-deployment
 
 jobs:
   build:
@@ -13,7 +13,8 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout Web Application Repository
+        uses: actions/checkout@v1
 
       - name: Node ${{ matrix.node }}
         uses: actions/setup-node@v1
@@ -26,13 +27,19 @@ jobs:
           npm ci
           npm run build:production
 
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: tipapp-web
+          path: web/dist/tipapp
+
       - name: Copy Files to Droplet
         uses: appleboy/scp-action@master
         with:
-            host: ${{ secrets. DIGITALOCEAN_HOST_WEB }}
-            username: ${{ secrets. DIGITALOCEAN_USERNAME }}
-            key: ${{ secrets. DIGITALOCEAN_KEY }}                        
-            source: "web/dist/tipapp"
-            target: "/var/www/html/tipnorthshore.net/tipapp"
-            strip_components: 3
-            rm: true
+          host: ${{ secrets. DIGITALOCEAN_HOST_WEB }}
+          username: ${{ secrets. DIGITALOCEAN_USERNAME }}
+          key: ${{ secrets. DIGITALOCEAN_KEY }}                        
+          source: "web/dist/tipapp"
+          target: "/var/www/html/tipnorthshore.net/tipapp"
+          strip_components: 3
+          rm: true
