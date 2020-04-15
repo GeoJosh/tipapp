@@ -2,7 +2,7 @@ name: Service API
 on: [push]
 
 jobs:
-  unittest:
+  build:
     name: Service API Unit Tests
     runs-on: ubuntu-latest
     steps:
@@ -12,23 +12,4 @@ jobs:
       - name: Python Pytest Github Action
         uses: fylein/python-pytest-github-action@v2
         with:
-          args: cd service && pip3 install -r requirements.txt -r tests/requirements.txt
-
-      - name: Cache Python Libraries
-        uses: actions/cache@v1
-        env:
-          cache-name: service-python-libraries
-        with:
-          path: /usr/local/lib/python3.7/site-packages
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
-      - name: Python Pytest Github Action
-        uses: fylein/python-pytest-github-action@v2
-        with:
-          args: cd service && PYTHONPATH=. pytest --cov=app
-      
-
+          args: cd service && pip3 install -r requirements.txt -r tests/requirements.txt && PYTHONPATH=. pytest --cov=app
