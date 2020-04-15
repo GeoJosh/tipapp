@@ -11,7 +11,7 @@ function loadTip(element, api_base) {
                     <div class="tipapp-display-employer">' + 'Employee of ' + data['employer'] + '</div> \
                     <div class="tipapp-display-employment_information">' + data['employment_information'] + '</div> \
                     <div class="tipapp-display-venmo_username"> \
-                        <a class="button tipapp-action-button" href="https://venmo.com/' + data['venmo_username'] + '"> \
+                        <a class="button tipapp-action-button wp-block-button__link" href="https://venmo.com/' + data['venmo_username'] + '"> \
                         <img src="' + tipapp_configuration.logo_url + '"/> \
                         </a> \
                     </div> \
@@ -28,7 +28,7 @@ function loadTip(element, api_base) {
 }
 
 jQuery(document).ready( function() {
-    jQuery('.tipapp-action-button-block')
+    jQuery('.tipapp-action-button')
         .click((function(e) {
             loadTip(this);
          }));

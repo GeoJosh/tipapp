@@ -39,7 +39,7 @@ class tipapp_widget extends WP_Widget {
       ?>
 
         <button
-          class="tipapp-action-button"
+          class="tipapp-action-button wp-block-button__link"
           onclick="loadTip(this, '<?php echo $tipapp_api_base; ?>')">
           <?php echo $tipapp_button_label; ?>
         </button>
@@ -96,14 +96,14 @@ class tipapp_widget extends WP_Widget {
   }
 }
 
-function tipapp_block() {
-  wp_enqueue_script('tipapp-block', plugin_dir_url(__FILE__) . 'tipapp-block.js', array('wp-blocks','wp-editor'), '1.1', true);
-}
-add_action('enqueue_block_editor_assets', 'tipapp_block');
+// function tipapp_block() {
+//   wp_enqueue_script('tipapp-block', plugin_dir_url(__FILE__) . 'tipapp-block.js', array('wp-blocks','wp-editor'), null, true);
+// }
+// add_action('enqueue_block_editor_assets', 'tipapp_block');
 
 // Enqueue Widget Javascript
 function tipapp_scripts() {
-  wp_register_script('tipapp_script', plugins_url('tipapp.js', __FILE__), array('jquery', 'jquery-ui-dialog'), '1.1', true);
+  wp_register_script('tipapp_script', plugins_url('tipapp.js', __FILE__), array('jquery', 'jquery-ui-dialog'), null, true);
   wp_enqueue_script('tipapp_script');
   wp_localize_script('tipapp_script', 'tipapp_configuration', array(
     'logo_url' => plugins_url('venmo_logo_white.png', __FILE__),
@@ -114,7 +114,7 @@ add_action('wp_enqueue_scripts', 'tipapp_scripts');
 
 // Enqueue Widget Stylesheet
 function tipapp_styles() {
-  wp_register_style('tipapp_stylesheet', plugins_url('tipapp.css', __FILE__));
+  wp_register_style('tipapp_stylesheet', plugins_url('tipapp.css', __FILE__), null);
   wp_enqueue_style('tipapp_stylesheet');
   wp_enqueue_style( 'wp-jquery-ui-dialog' );
 }

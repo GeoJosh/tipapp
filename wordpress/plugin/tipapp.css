@@ -1,5 +1,10 @@
 .tipapp-action-button > img {
     height: 15px;
+    vertical-align: middle;
+}
+
+.tipapp-action-button {
+    color: #fff;
 }
 
 .tipapp-display-container {

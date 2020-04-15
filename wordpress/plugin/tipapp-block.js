@@ -62,18 +62,16 @@ wp.blocks.registerBlockType('tipapp/tip-button', {
         );
     },
     save: function(props) {
-        return wp.element.createElement('div', null,
-            wp.element.createElement('div', { class: 'wp-block-buttons' },
+            return wp.element.createElement('div', { class: 'wp-block-buttons' },
                 wp.element.createElement('div', { class: 'wp-block-button' },
                     wp.element.createElement(
                         'button',
                         {
-                            class: 'tipapp-action-button tipapp-action-button-block',
+                            class: 'tipapp-action-button wp-block-button__link',
                             'data-api-base': props.attributes.api_base,
                         },
                         props.attributes.button_label)
                 )
             )
-        );
     }
   })
