@@ -2,7 +2,7 @@ name: Web Application Deployment
 on:
   push:
     branches:
-      - chore/automated-service-deployment
+      - master
 
 jobs:
   build:
