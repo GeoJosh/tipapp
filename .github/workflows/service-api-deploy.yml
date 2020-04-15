@@ -1,0 +1,13 @@
+name: Service API Deployment
+on:
+  push:
+    branches:
+      - chore/automated-service-deployment
+
+jobs:
+  build:
+    name: Build and Production Distributables
+    runs-on: ubuntu-latest
+
+    steps:
+        - run: ls -R .

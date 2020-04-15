@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build and Production Distributables
+    name: Build Production Distributables
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -61,7 +61,7 @@ jobs:
           host: ${{ secrets. DIGITALOCEAN_HOST_WEB }}
           username: ${{ secrets. DIGITALOCEAN_USERNAME }}
           key: ${{ secrets. DIGITALOCEAN_KEY }}                        
-          source: "tipapp-web/web/dist/tipapp"
+          source: "tipapp-web"
           target: ${{ secrets. DEPLOY_PATH }}
-          strip_components: 3
+          strip_components: 1
           rm: true
