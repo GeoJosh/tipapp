@@ -2,7 +2,7 @@ name: Web Application Deployment
 on:
   push:
     branches:
-      - master
+      - chore/automated-service-deployment
 
 jobs:
   build:
@@ -15,6 +15,18 @@ jobs:
     steps:
       - name: Checkout Web Application Repository
         uses: actions/checkout@v1
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        env:
+          cache-name: web-node-modules
+        with:
+          path: web/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
 
       - name: Node ${{ matrix.node }}
         uses: actions/setup-node@v1
